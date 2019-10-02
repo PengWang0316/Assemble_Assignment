@@ -2,7 +2,7 @@ import React, { memo, useCallback, useState, useEffect, ReactElement } from 'rea
 import { makeStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import {
-  Table, TableHead, TableRow, TableCell, TableBody,
+  Table, TableHead, TableRow, TableCell, TableBody, Hidden,
 } from '@material-ui/core';
 
 import { fetchCart as fetchCartAction } from '../../store/Cart/actions';
@@ -17,7 +17,7 @@ const useStyles = makeStyles({
     backgroundColor: '#e6e6e6',
   },
   table: {
-    minWidth: 450,
+    minWidth: 250,
   },
   productImg: {
     width: 100,
@@ -42,8 +42,12 @@ type PropType = {
   fetchCart: Function;
 };
 
+let totalAmount = null;
+
 export const Cart = ({ fetchCart, cart }: PropType): ReactElement => {
   const classes = useStyles({});
+  if (totalAmount === null && cart) totalAmount = cart.reduce((total, product) => (total * 100 + product.unitPrice * 100 * product.quantity) / 100, 0).toFixed(2);
+
   useEffect(() => {
     fetchCart();
   }, []);
@@ -55,8 +59,10 @@ export const Cart = ({ fetchCart, cart }: PropType): ReactElement => {
           <TableRow>
             <TableCell className={classes.title}>Your Cart</TableCell>
             <TableCell align="left">&nbsp;</TableCell>
-            <TableCell align="left" className={classes.smallFont}>QUANTITY</TableCell>
-            <TableCell align="left" className={classes.smallFont}>PRICE</TableCell>
+            <Hidden xsDown>
+              <TableCell align="left" className={classes.smallFont}>QUANTITY</TableCell>
+              <TableCell align="left" className={classes.smallFont}>PRICE</TableCell>
+            </Hidden>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -71,21 +77,44 @@ export const Cart = ({ fetchCart, cart }: PropType): ReactElement => {
                    SKU#
                   {product.sku}
                 </p>
+                <Hidden smUp>
+                  <p className={classes.smallDarkerFont}>
+                    QTY:
+                    &nbsp;
+                    {product.quantity}
+                    &nbsp;&nbsp;
+                    PRICE: $
+                    {((product.unitPrice * 100 * product.quantity) / 100).toFixed(2)}
+                  </p>
+                </Hidden>
               </TableCell>
-              <TableCell className={classes.smallDarkerFont} align="left">{product.quantity}</TableCell>
-              <TableCell className={classes.smallDarkerFont} align="left">
-                $
-                {((product.unitPrice * 100 * product.quantity) / 100).toFixed(2)}
-              </TableCell>
+              <Hidden xsDown>
+                <TableCell className={classes.smallDarkerFont} align="left">{product.quantity}</TableCell>
+                <TableCell className={classes.smallDarkerFont} align="left">
+                  $
+                  {((product.unitPrice * 100 * product.quantity) / 100).toFixed(2)}
+                </TableCell>
+              </Hidden>
             </TableRow>
           ))}
           <TableRow>
-            <TableCell>&nbsp;</TableCell>
-            <TableCell>&nbsp;</TableCell>
-            <TableCell className={classes.smallFont}>SUBTOTAL</TableCell>
+            <TableCell className={classes.smallFont}>
+              <Hidden smUp>SUBTOTAL</Hidden>
+            </TableCell>
             <TableCell className={classes.smallDarkerFont}>
-              $
-              {cart && cart.reduce((total, product) => (total * 100 + product.unitPrice * 100 * product.quantity) / 100, 0).toFixed(2)}
+              <Hidden smUp>
+                $
+                {totalAmount !== null && totalAmount}
+              </Hidden>
+            </TableCell>
+            <TableCell className={classes.smallFont}>
+              <Hidden xsDown>SUBTOTAL</Hidden>
+            </TableCell>
+            <TableCell className={classes.smallDarkerFont}>
+              <Hidden xsDown>
+                $
+                {totalAmount !== null && totalAmount}
+              </Hidden>
             </TableCell>
           </TableRow>
         </TableBody>
