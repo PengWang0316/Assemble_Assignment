@@ -62,7 +62,7 @@ export const Navbar = () => {
       <AppBar position="static" className={classes.appbar} data-testid="navbar">
         <Toolbar>
           <Link to={HOME_PAGE_URL} className={`${classes.link} ${classes.flex1}`} data-testid="titleLink">
-            <Typography variant="h6" color="inherit">App Name</Typography>
+            <Typography variant="h6" color="inherit">Assemble Store</Typography>
           </Link>
           {/* <Hidden only="xs">
             <Button color="inherit" data-testid="loginButton">

@@ -5,14 +5,14 @@ import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 import Navbar from './Navbar';
-import { HOME_PAGE_URL } from '../config';
+import { HOME_PAGE_URL, BILL_PAGE_URL, COMPLETE_PAGE_URL } from '../config';
 
 const theme = createMuiTheme({
   palette: {
     primary: {
-      light: '#4A6572',
-      main: '#344955',
-      dark: '#232F34',
+      light: '#4081f5',
+      main: '#1a4fad',
+      dark: '#08275e',
       contrastText: '#fff',
     },
     secondary: {
@@ -26,7 +26,9 @@ const theme = createMuiTheme({
 
 /* istanbul ignore next */
 // const HomePage = importedComponent(() => import(/* webpackChunkName: "HomePageContainer" *//* webpackPrefetch: true */ './containers/HomePageContainer').catch(err => console.log(err)));
-const HomePage = lazy(() => import(/* webpackChunkName: "HomePageContainer" *//* webpackPrefetch: true */ './containers/Cart'));
+const CartPage = lazy(() => import(/* webpackChunkName: "CartPageContainer" *//* webpackPrefetch: true */ './containers/Cart'));
+const BillPage = lazy(() => import(/* webpackChunkName: "BillContainer" *//* webpackPrefetch: true */ './containers/BillInformation'));
+const OrderCompletePage = lazy(() => import(/* webpackChunkName: "OrderCompletePageContainer" *//* webpackPrefetch: true */ './containers/OrderComplete'));
 
 
 /**
@@ -41,7 +43,9 @@ export const App = (): ReactElement => (
         <main>
           <Suspense fallback={<div>Loading...</div>}>
             <Switch>
-              <Route exact path={HOME_PAGE_URL} component={HomePage} />
+              <Route exact path={HOME_PAGE_URL} component={CartPage} />
+              <Route exact path={BILL_PAGE_URL} component={BillPage} />
+              <Route exact path={COMPLETE_PAGE_URL} component={OrderCompletePage} />
               <Route render={() => <p>Not Fount!</p>} />
             </Switch>
           </Suspense>
