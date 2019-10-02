@@ -2,8 +2,9 @@ import React, { memo,useEffect, ReactElement } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import {
-  Table, TableHead, TableRow, TableCell, TableBody, Hidden,
+  Table, TableHead, TableRow, TableCell, TableBody, Hidden, Button,
 } from '@material-ui/core';
+import { Link, LinkProps } from 'react-router-dom';
 
 import { fetchCart as fetchCartAction } from '../../store/Cart/actions';
 import { CartType } from '../../store/Cart/types';
@@ -36,6 +37,10 @@ const useStyles = makeStyles({
     fontSize: 11,
     color: '#4f4f4f',
   },
+  btnDiv: {
+    textAlign: 'right',
+    marginTop: 40,
+  },
 });
 
 type PropType = {
@@ -44,6 +49,10 @@ type PropType = {
 };
 
 let totalAmount = null;
+
+const AdapterLink = React.forwardRef<HTMLAnchorElement, LinkProps>((props, ref) => (
+  <Link innerRef={ref as any} {...props} />
+));
 
 export const Cart = ({ fetchCart, cart }: PropType): ReactElement => {
   const classes = useStyles({});
@@ -90,6 +99,9 @@ export const Cart = ({ fetchCart, cart }: PropType): ReactElement => {
           </TableRow>
         </TableBody>
       </Table>
+      <div className={classes.btnDiv}>
+        <Button variant="contained" color="primary" component={AdapterLink} to="/bill">CHECK OUT</Button>
+      </div>
     </div>
   );
 };
