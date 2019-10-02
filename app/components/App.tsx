@@ -1,7 +1,7 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy, ReactElement } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
-import importedComponent from 'react-imported-component';
+// import importedComponent from 'react-imported-component';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 import Navbar from './Navbar';
@@ -32,7 +32,7 @@ const HomePage = lazy(() => import(/* webpackChunkName: "HomePageContainer" *//*
 /**
  * The root component that contains the theme, routers, navbar, and login dialog
  */
-export const App = () => (
+export const App = (): ReactElement => (
   <MuiThemeProvider theme={theme}>
     <Router>
       <div>
