@@ -1,7 +1,7 @@
 {
-  "name": "react-test",
+  "name": "assemble-assignment",
   "version": "0.0.1",
-  "description": "A web application for blogs.",
+  "description": "Assemble Assignment.",
   "main": "index.js",
   "scripts": {
     "create": "webpack",
