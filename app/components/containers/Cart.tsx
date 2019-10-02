@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useState, useEffect, ReactElement } from 'react';
+import React, { memo,useEffect, ReactElement } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import {
@@ -7,6 +7,7 @@ import {
 
 import { fetchCart as fetchCartAction } from '../../store/Cart/actions';
 import { CartType } from '../../store/Cart/types';
+import Product from '../Product';
 
 const useStyles = makeStyles({
   root: {
@@ -66,37 +67,7 @@ export const Cart = ({ fetchCart, cart }: PropType): ReactElement => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {cart && cart.map((product) => (
-            <TableRow key={product.sku}>
-              <TableCell component="th" scope="row">
-                <img src={product.image} alt={product.name} className={classes.productImg} />
-              </TableCell>
-              <TableCell align="left">
-                <p className={classes.smallDarkerFont}>{product.name}</p>
-                <p className={classes.smallFont}>
-                   SKU#
-                  {product.sku}
-                </p>
-                <Hidden smUp>
-                  <p className={classes.smallDarkerFont}>
-                    QTY:
-                    &nbsp;
-                    {product.quantity}
-                    &nbsp;&nbsp;
-                    PRICE: $
-                    {((product.unitPrice * 100 * product.quantity) / 100).toFixed(2)}
-                  </p>
-                </Hidden>
-              </TableCell>
-              <Hidden xsDown>
-                <TableCell className={classes.smallDarkerFont} align="left">{product.quantity}</TableCell>
-                <TableCell className={classes.smallDarkerFont} align="left">
-                  $
-                  {((product.unitPrice * 100 * product.quantity) / 100).toFixed(2)}
-                </TableCell>
-              </Hidden>
-            </TableRow>
-          ))}
+          {cart && cart.map((product) => <Product product={product} />)}
           <TableRow>
             <TableCell className={classes.smallFont}>
               <Hidden smUp>SUBTOTAL</Hidden>
