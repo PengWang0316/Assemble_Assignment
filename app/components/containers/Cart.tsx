@@ -19,7 +19,7 @@ type PropType = {
   fetchCart: Function;
 };
 
-export const HomePageContainer = ({ fetchCart, cart }: PropType): ReactElement => {
+export const Cart = ({ fetchCart, cart }: PropType): ReactElement => {
   const classes = useStyles({});
   useEffect(() => {
     fetchCart();
@@ -35,4 +35,4 @@ const mapStateToProps = ({ cart }) => ({
   cart,
 });
 const mapDispatchToProps = { fetchCart: fetchCartAction };
-export default connect(mapStateToProps, mapDispatchToProps)(memo(HomePageContainer));
+export default connect(mapStateToProps, mapDispatchToProps)(memo(Cart));
