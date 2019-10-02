@@ -1,5 +1,5 @@
 export default interface ProductType {
-  suk: string;
+  sku: number;
   unitPrice: number;
   name: string;
   quantity: number;
