@@ -9,7 +9,7 @@ const CompressionPlugin = require('compression-webpack-plugin');
 // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const config = {
-    entry: [
+  entry: [
     './app/index.tsx',
   ],
   output: {
@@ -26,7 +26,7 @@ const config = {
       // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
       { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
       { test: /\.(js)$/, exclude: /node_modules/, use: 'babel-loader' },
-      {// Use the MiniCssExtractPlugin to extract css file
+      { // Use the MiniCssExtractPlugin to extract css file
         test: /\.css$/,
         use: [
           {
