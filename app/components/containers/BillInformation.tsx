@@ -85,8 +85,8 @@ export const BillInformation = (): ReactElement => {
             <input className={classes.textInput} type="password" name="cardNumber" id="cardNumber" defaultValue="XXXX XXXX XXXX XXXX" />
           </label>
           <label className={classes.label} htmlFor="cardDate">
-            <span className={classes.labelSpan}>Card Number</span>
-            <input className={classes.textInput} type="date" name="cardDate" id="cardDate" defaultValue="MM/YYYY" />
+            <span className={classes.labelSpan}>Expiration Date</span>
+            <input className={classes.textInput} type="month" name="cardDate" id="cardDate" defaultValue="MM/YYYY" />
           </label>
           <label className={classes.label} htmlFor="cardCVV">
             <span className={classes.labelSpan}>CVV</span>
