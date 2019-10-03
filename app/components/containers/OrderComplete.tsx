@@ -1,6 +1,7 @@
 import React, { ReactElement, memo } from 'react';
 import { Button, Divider } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { Link, LinkProps } from 'react-router-dom';
 
 const useStyles = makeStyles({
   root: {
@@ -20,6 +21,10 @@ const useStyles = makeStyles({
   },
 });
 
+const AdapterLink = React.forwardRef<HTMLAnchorElement, LinkProps>((props, ref) => (
+  <Link innerRef={ref as any} {...props} />
+));
+
 export const OrderComplete = (): ReactElement => {
   const classes = useStyles({});
   return (
@@ -28,7 +33,7 @@ export const OrderComplete = (): ReactElement => {
       <Divider className={classes.margin35} />
       <p className={classes.margin35}>Hooray! Way to order those products.</p>
       <div className={classes.margin35}>
-        <Button variant="contained" color="primary">GO HOME</Button>
+        <Button variant="contained" color="primary" component={AdapterLink} to="/">GO HOME</Button>
       </div>
     </div>
   );
