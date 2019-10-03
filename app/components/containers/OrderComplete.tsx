@@ -15,6 +15,9 @@ const useStyles = makeStyles({
     fontSize: 16,
     textAlign: 'left',
   },
+  margin35: {
+    marginBottom: 35,
+  },
 });
 
 export const OrderComplete = (): ReactElement => {
@@ -22,9 +25,9 @@ export const OrderComplete = (): ReactElement => {
   return (
     <div className={classes.root}>
       <p className={classes.title}>Order Complete</p>
-      <Divider />
-      <p>Hooray! Way to order those products.</p>
-      <div>
+      <Divider className={classes.margin35} />
+      <p className={classes.margin35}>Hooray! Way to order those products.</p>
+      <div className={classes.margin35}>
         <Button variant="contained" color="primary">GO HOME</Button>
       </div>
     </div>
