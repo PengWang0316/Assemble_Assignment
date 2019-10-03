@@ -3,6 +3,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Divider, Button } from '@material-ui/core';
 import { Link, LinkProps } from 'react-router-dom';
 
+import StateSelect from '../StateSelect';
+import CountrySelect from '../CountrySelect';
+
 const useStyles = makeStyles({
   root: {
     margin: '50px auto 10px auto',
@@ -18,7 +21,7 @@ const useStyles = makeStyles({
     display: 'flex',
     marginTop: 40,
   },
-  formDiv: {
+  label: {
     width: '100%',
     marginBottom: 10,
     display: 'flex',
@@ -43,7 +46,7 @@ const useStyles = makeStyles({
     fontSize: 11,
     color: '#4f4f4f',
   },
-  labelDiv: {
+  labelSpan: {
     fontSize: 11,
     color: '#4f4f4f',
     minWidth: 100,
@@ -73,59 +76,52 @@ export const BillInformation = (): ReactElement => {
       <div className={classes.flexDiv}>
         <div className={classes.info}>
           <div className={classes.titleDiv}>Payment Information</div>
-          <div className={classes.formDiv}>
-            <label className={classes.labelDiv} htmlFor="cardName">Name on Card</label>
+          <label className={classes.label} htmlFor="cardName">
+            <span className={classes.labelSpan}>Name on cardCVV</span>
             <input className={classes.textInput} type="text" name="cardName" id="cardName" defaultValue="Name on Card" />
-          </div>
-          <div className={classes.formDiv}>
-            <label className={classes.labelDiv} htmlFor="cardNumber">Card Number</label>
+          </label>
+          <label className={classes.label} htmlFor="cardNumber">
+            <span className={classes.labelSpan}>Card Number</span>
             <input className={classes.textInput} type="password" name="cardNumber" id="cardNumber" defaultValue="XXXX XXXX XXXX XXXX" />
-          </div>
-          <div className={classes.formDiv}>
-            <label className={classes.labelDiv} htmlFor="cardDate">Card Number</label>
+          </label>
+          <label className={classes.label} htmlFor="cardDate">
+            <span className={classes.labelSpan}>Card Number</span>
             <input className={classes.textInput} type="date" name="cardDate" id="cardDate" defaultValue="MM/YYYY" />
-          </div>
-          <div className={classes.formDiv}>
-            <label className={classes.labelDiv} htmlFor="cardCVV">CVV</label>
+          </label>
+          <label className={classes.label} htmlFor="cardCVV">
+            <span className={classes.labelSpan}>CVV</span>
             <input className={classes.textInput} type="text" name="cardCVV" id="cardCVV" defaultValue="CVV" />
-          </div>
+          </label>
         </div>
 
         <div className={classes.info}>
           <div className={classes.titleDiv}>Shipping Address</div>
-          <div className={classes.formDiv}>
-            <label className={classes.labelDiv} htmlFor="name">Name</label>
+          <label className={classes.label} htmlFor="name">
+            <span className={classes.labelSpan}>Name</span>
             <input className={classes.textInput} type="text" name="name" id="name" defaultValue="Full name" />
-          </div>
-          <div className={classes.formDiv}>
-            <label className={classes.labelDiv} htmlFor="address">Address</label>
+          </label>
+          <label className={classes.label} htmlFor="address">
+            <span className={classes.labelSpan}>Address</span>
             <input className={classes.textInput} type="text" name="address" id="address" defaultValue="Address" />
-          </div>
-          <div className={classes.formDiv}>
-            <label className={classes.labelDiv} htmlFor="apt">Apt/suite/etc</label>
+          </label>
+          <label className={classes.label} htmlFor="apt">
+            <span className={classes.labelSpan}>Apt/suite/etc</span>
             <input className={classes.textInput} type="text" name="apt" id="apt" defaultValue="Apt/suite/etc" />
-          </div>
-          <div className={classes.formDiv}>
-            <label className={classes.labelDiv} htmlFor="city">City</label>
+          </label>
+          <label className={classes.label} htmlFor="city">
+            <span className={classes.labelSpan}>City</span>
             <input className={classes.textInput} type="text" name="city" id="city" defaultValue="City" />
-          </div>
-          <div className={classes.formDiv}>
-            <label className={classes.labelDiv} htmlFor="country">Country</label>
-            <select name="country">
-              <option value="United State">United State</option>
-            </select>
-          </div>
-          <div className={classes.formDiv}>
-            <label className={classes.labelDiv} htmlFor="state">Country</label>
-            <select name="state">
-              <option value="State">State</option>
-            </select>
-          </div>
-          <div className={classes.formDiv}>
-            <label className={classes.labelDiv} htmlFor="zipcode">Zipcode</label>
+          </label>
+          <CountrySelect />
+          <StateSelect />
+          <label className={classes.label} htmlFor="zipcode">
+            <span className={classes.labelSpan}>Zipcode</span>
             <input className={classes.textInput} type="text" name="zipcode" id="zipcode" defaultValue="ZIP Code" />
+          </label>
+          <div className={`${classes.right} ${classes.smallDarkerFont}`}>
+            <input type="checkbox" />
+            Billing address same as shipping
           </div>
-          <div className={`${classes.right} ${classes.smallDarkerFont}`}><input type="checkbox" />Billing address same as shipping</div>
         </div>
 
       </div>

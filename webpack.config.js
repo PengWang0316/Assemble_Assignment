@@ -101,7 +101,7 @@ if (process.env.NODE_ENV && process.env.NODE_ENV.trim() === 'production') {
       filename: '[file]',
       algorithm: 'gzip',
       test: /\.ts|\.tsx|\.js$|\.css$|\.html$/,
-      threshold: 10240,
+      // threshold: 10240,
       minRatio: 0.7,
       deleteOriginalAssets: false,
     }),
