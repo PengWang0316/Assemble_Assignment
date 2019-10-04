@@ -1,8 +1,8 @@
 import React, { ReactElement, memo } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Divider, Button } from '@material-ui/core';
-import { Link, LinkProps } from 'react-router-dom';
 
+import AdapterLink from '../AdapterLink';
 import StateSelect from '../StateSelect';
 import CountrySelect from '../CountrySelect';
 
@@ -61,10 +61,6 @@ const useStyles = makeStyles({
     },
   },
 });
-
-const AdapterLink = React.forwardRef<HTMLAnchorElement, LinkProps>((props, ref) => (
-  <Link innerRef={ref as any} {...props} />
-));
 
 export const BillInformation = (): ReactElement => {
   const classes = useStyles({});

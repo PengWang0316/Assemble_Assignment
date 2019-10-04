@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import {
   Table, TableHead, TableRow, TableCell, TableBody, Hidden, Button,
 } from '@material-ui/core';
-import { Link, LinkProps } from 'react-router-dom';
 
+import AdapterLink from '../AdapterLink';
 import { fetchCart as fetchCartAction } from '../../store/Cart/actions';
 import { CartType } from '../../store/Cart/types';
 import Product from '../Product';
@@ -49,10 +49,6 @@ type PropType = {
 };
 
 let totalAmount = null;
-
-const AdapterLink = React.forwardRef<HTMLAnchorElement, LinkProps>((props, ref) => (
-  <Link innerRef={ref as any} {...props} />
-));
 
 export const Cart = ({ fetchCart, cart }: PropType): ReactElement => {
   const classes = useStyles({});

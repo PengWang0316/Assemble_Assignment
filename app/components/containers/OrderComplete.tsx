@@ -1,7 +1,8 @@
 import React, { ReactElement, memo } from 'react';
 import { Button, Divider } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { Link, LinkProps } from 'react-router-dom';
+
+import AdapterLink from '../AdapterLink';
 
 const useStyles = makeStyles({
   root: {
@@ -20,10 +21,6 @@ const useStyles = makeStyles({
     marginBottom: 35,
   },
 });
-
-const AdapterLink = React.forwardRef<HTMLAnchorElement, LinkProps>((props, ref) => (
-  <Link innerRef={ref as any} {...props} />
-));
 
 export const OrderComplete = (): ReactElement => {
   const classes = useStyles({});
