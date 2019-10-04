@@ -52,7 +52,12 @@ let totalAmount = null;
 
 export const Cart = ({ fetchCart, cart }: PropType): ReactElement => {
   const classes = useStyles({});
-  if (totalAmount === null && cart) totalAmount = cart.reduce((total, product) => (total * 100 + product.unitPrice * 100 * product.quantity) / 100, 0).toFixed(2);
+  if (totalAmount === null && cart) {
+    totalAmount = cart.reduce(
+      (total, product) => (total * 100 + product.unitPrice * 100 * product.quantity) / 100,
+      0,
+    ).toFixed(2);
+  }
 
   useEffect(() => {
     fetchCart();
