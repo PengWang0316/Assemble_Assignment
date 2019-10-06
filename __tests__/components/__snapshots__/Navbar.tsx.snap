@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test the Navbar component should match the snapshot 1`] = `
+<header
+  className="MuiPaper-root MuiPaper-elevation4 MuiAppBar-root MuiAppBar-positionStatic makeStyles-appbar-4 MuiAppBar-colorPrimary"
+  data-testid="navbar"
+>
+  <div
+    className="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+  >
+    <Link
+      className="makeStyles-link-1 makeStyles-flex1-3"
+      data-testid="titleLink"
+      to="/"
+    >
+      <h6
+        className="MuiTypography-root MuiTypography-h6 MuiTypography-colorInherit"
+      >
+        Assemble Store
+      </h6>
+    </Link>
+  </div>
+</header>
+`;

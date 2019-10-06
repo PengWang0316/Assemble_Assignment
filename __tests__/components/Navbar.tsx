@@ -17,4 +17,5 @@ describe('Test the Navbar component', () => {
     expect(component.text()).toBe('Assemble Store');
   });
 
+  test('should match the snapshot', () => expect(renderer.create(<Navbar />).toJSON()).toMatchSnapshot());
 });
