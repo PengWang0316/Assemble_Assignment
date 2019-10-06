@@ -1,13 +1,9 @@
 /* eslint-disable react/destructuring-assignment */
-import React, { useState, memo, useCallback } from 'react';
+import React, { memo } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import {
-  Toolbar, AppBar, Typography, Hidden, Button, IconButton, Menu, MenuItem,
-} from '@material-ui/core';
+import { Toolbar, AppBar, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { orange, green } from '@material-ui/core/colors';
-import MenuIcon from '@material-ui/icons/Menu';
-// import { Auth } from 'aws-amplify';
 
 import { HOME_PAGE_URL } from '../config';
 
@@ -52,10 +48,6 @@ const useStyles = makeStyles((theme) => ({
 /** Navbar component */
 export const Navbar = () => {
   const classes = useStyles({});
-  const [anchorEl, setAnchorEl] = useState(null);
-  const handleMenuIconClick = useCallback(({ currentTarget }) => {
-    setAnchorEl((state) => state ? null : currentTarget);
-  }, []);
 
   return (
     <>
@@ -64,34 +56,6 @@ export const Navbar = () => {
           <Link to={HOME_PAGE_URL} className={`${classes.link} ${classes.flex1}`} data-testid="titleLink">
             <Typography variant="h6" color="inherit">Assemble Store</Typography>
           </Link>
-          {/* <Hidden only="xs">
-            <Button color="inherit" data-testid="loginButton">
-              Test Button
-            </Button>
-          </Hidden>
-          <Hidden only={['xl', 'lg', 'md', 'sm']}>
-            <IconButton
-              color="inherit"
-              aria-label="Menu"
-              onClick={handleMenuIconClick}
-              aria-owns={anchorEl ? 'simple-menu' : null}
-              aria-haspopup="true"
-              data-testid="navbarDropMenuButton"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="simple-menu"
-              anchorEl={anchorEl}
-              open={Boolean(anchorEl)}
-              onClose={handleMenuIconClick}
-              data-testid="dropDownMenu"
-            >
-              <MenuItem data-testid="loginMenu">
-                Test Button
-              </MenuItem>
-            </Menu>
-          </Hidden> */}
         </Toolbar>
       </AppBar>
     </>
